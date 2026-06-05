@@ -1,0 +1,233 @@
+Dimensional Programming
+A programming paradigm designed for AI, not CPUs.  
+Objects are points. Behavior is movement. State is geometry.
+
+Overview
+Dimensional Programming is an AI‑native programming paradigm that treats objects as dimensions and state as movement across a manifold, instead of as static classes with predefined attributes.
+
+Traditional programming was designed for CPUs:
+
+define everything upfront
+
+rigid classes and object trees
+
+step‑by‑step instructions
+
+AI doesn’t work that way.
+
+AI operates in high‑dimensional geometry:
+
+concepts as points
+
+relationships as directions
+
+state as positions on a surface
+
+reasoning as transitions between points
+
+Dimensional Programming aligns software structure with this geometric reality.
+
+Core model: X, Y, Z
+At the heart of Dimensional Programming is a simple, geometric triple:
+
+X — Identity  
+The current object of focus. A single point.
+Examples: "car", "ticket #4821", "user session", "engine".
+
+Y — Modifier  
+What is happening to X. An action, condition, or transformation.
+Examples: "running", "escalated", "expired", "overheating".
+
+Z — State  
+The resulting state after applying Y to X.
+Examples: "car.running", "ticket #4821.escalated", "session.expired".
+
+Then:
+
+Z becomes the next X.
+
+This creates a state transition surface:
+
+(
+𝑋
+,
+𝑌
+)
+→
+𝑍
+You never manipulate “the whole system” at once—only the current point and its next move.
+
+Dimensional principles
+1. Objects are points
+An object is not a bag of attributes.
+It is a point in a space of potential detail.
+
+"car" is a point.
+
+"engine" is a point.
+
+"carburetor" is a point.
+
+Details only exist when referenced.
+
+2. Detail manifests on observation
+You don’t define everything upfront.
+
+When you talk about car, only X = "car" exists.
+
+When you say “check the engine”, X = "engine" manifests.
+
+When you say “inspect the carburetor”, X = "carburetor" manifests.
+
+This mirrors how AI activates concepts: only what’s in focus is “alive.”
+
+3. State is geometric, not procedural
+Instead of:
+
+text
+do A
+then B
+then C
+Dimensional Programming is:
+
+text
+X₀ --Y₀--> Z₀ (= X₁)
+X₁ --Y₁--> Z₁ (= X₂)
+X₂ --Y₂--> Z₂ ...
+A chain of (identity, modifier) → state transitions.
+
+4. Dimensional descent
+You can “zoom in” by moving down a dimension:
+
+X = "car"
+
+then X = "engine"
+
+then X = "carburetor"
+
+Each step is a new point, not a field on a class.
+
+Why this is AI‑native
+LLMs and neural networks internally operate on:
+
+vectors
+
+manifolds
+
+bilinear maps
+
+attention over relationships
+
+The mapping:
+
+X → a point in embedding space
+
+Y → a direction / transformation
+
+Z → a new point (state)
+
+This is exactly what the model is already doing.
+
+Dimensional Programming doesn’t force AI to pretend to be a human programmer.
+It gives AI a surface to move on that matches its internal math.
+
+Practical benefits
+Lower token/credit usage  
+Only the current X and Y need to be in context, not the entire object tree.
+
+Fewer hallucinations  
+AI doesn’t invent unused attributes—nothing exists until referenced.
+
+Incremental updates  
+You update state (Z), not regenerate entire files or systems.
+
+Natural explainability  
+Behavior is a chain of (X, Y) → Z transitions—easy to trace and reason about.
+
+Composable reasoning  
+Z becomes the next X, enabling clean, chainable logic without global mutation.
+
+Example: Support ticket
+Traditional style
+text
+class Ticket {
+  id
+  status
+  priority
+  history
+  ...
+}
+Every field must be defined, loaded, and maintained—even if unused.
+
+Dimensional Programming
+text
+X = "ticket #4821"
+Y = "user reports login failure"
+Z = "ticket #4821.login_failure_reported"
+
+X = Z
+Y = "system requests logs"
+Z = "ticket #4821.logs_requested"
+
+X = Z
+Y = "user uploads logs"
+Z = "ticket #4821.logs_received"
+No giant class.
+No full object graph.
+Just state transitions.
+
+Example: Shopping cart
+text
+X = "cart"
+Y = "add item: laptop"
+Z = "cart.with_laptop"
+
+X = Z
+Y = "add item: mouse"
+Z = "cart.with_laptop_and_mouse"
+
+X = Z
+Y = "remove item: mouse"
+Z = "cart.with_laptop"
+Again: one point, one modifier, one new state.
+
+Implementation sketch
+You can implement Dimensional Programming in any language as a simple state engine:
+
+ts
+type Identity = string;
+type Modifier = string;
+type State = string;
+
+type Transition = (x: Identity, y: Modifier) => State;
+
+const transition: Transition = (x, y) => `${x}.${y}`;
+
+let X: Identity = "car";
+let Y: Modifier = "running";
+let Z: State = transition(X, Y); // "car.running"
+
+X = Z;
+Y = "overheating";
+Z = transition(X, Y); // "car.running.overheating"
+The paradigm is not the code—it’s the discipline:
+
+always operate on the current X
+
+never assume subcomponents unless referenced
+
+treat every step as (X, Y) → Z, with Z → X for the next step
+
+Vision
+Dimensional Programming is a foundation for:
+
+AI‑native orchestration
+
+multi‑agent coordination
+
+explainable reasoning chains
+
+cost‑efficient, geometry‑aligned systems
+
+Instead of simulating cognition with ever‑deeper class hierarchies,
+we let AI move across a dimensional surface of states—one point at a time.
